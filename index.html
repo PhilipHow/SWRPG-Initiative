@@ -1,0 +1,81 @@
+<!doctype HTML>
+<html>
+<head>
+ <link href="style.css" rel="stylesheet">
+ <script src="initiative.js"></script>
+</head>
+<body onload="setup()">
+
+<div id="new_slot">
+  <div id="player_or_gm">
+    <label>
+      Player
+      <input id="player_radio" type="radio" name="gm_player" checked/>
+    </label>
+    <label>
+      GM
+      <input id="gm_radio" type="radio" name="gm_player"/>
+    </label>
+  </div>
+
+  <div id="results">
+
+    <div id="success">
+      <span class="symbol">s</span>
+      <span id="success_counter"></span>
+      <button id="success_button" onclick="addSuccess()">+</button>
+    </div>
+    <div id="advantage">
+      <span class="symbol">a</span>
+      <span id="advantage_counter"></span>
+      <button id="success_button" onclick="addAdvantage()">+</button>
+    </div>
+    <div id="triumph">
+      <span class="symbol">x</span>
+      <span id="triumph_counter"></span>
+      <button id="triumph_button" onclick="addTriumph()">+</button>
+    </div>
+
+    <button id="clear" onclick="reset()">Clear</button>
+    <button id="add_slot" onclick="addSlot()">Add</button>
+  </div>
+</div>
+
+<div id="slots">
+  <table>
+    <tr>
+      <th>
+        Slot #
+      </th>
+      <th>
+        GM/Player
+      </th>
+      <th>
+        Successes
+      </th>
+      <th>
+        Advantages
+      </th>
+      <th>
+        Triumphs
+      </th>
+      <th>
+
+      </th>
+    </tr>
+
+    <tbody id="table_rows">
+
+    </tbody>
+
+  </table>
+</div>
+
+<div id="controls">
+<button id="next_button" onclick="next()">Start</button>
+<span id="round_counter"></span>
+</div>
+
+</body>
+
+</html>

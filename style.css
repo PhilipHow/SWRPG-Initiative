@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "SWRPG Symbols";
+  src: url("symbols.otf");
+}
+
+.symbol {
+  font-family: "SWRPG Symbols";
+}
+
+body {
+}
+
+.highlight {
+  background-color: lightgreen;
+}
