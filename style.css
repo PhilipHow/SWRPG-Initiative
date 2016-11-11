@@ -13,16 +13,78 @@
   src: url("fonts/symbols.otf");
 }
 
-.symbol {
-  font-family: "SWRPG Symbols";
+@font-face {
+  font-family: "TeutonNormal";
+  src: url("fonts/TeutonNormal.otf");
 }
 
 body {
-  font-family: "STARWARS";
+  font-family: "TeutonNormal", Helvetica, sans-serif;
+  color: #ece442;
+  background-color: black;
+}
+
+.ui {
+  border: 4px solid #609AF9;
+  margin: auto auto;
+  padding: 10px 10px;
+  border-radius: 10px;  
+}
+
+button {
+  background-color: black;
+  border-radius:5px;
+  display:inline-block;
+  cursor:pointer;
+  color: #16B2FF;
+  font-size: 20px;
+  border: 2px solid #16B2FF;
+  outline:none;
+}
+
+button:hover {
+  background-color: #16B2FF;
+  color: black;
+}
+
+button:active {
+
+}
+
+
+
+input[type=radio] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.radio_button {
+  display: inline-block;
+  width: 14px;
+  height: 15px;
+  border: 3px solid #16B2FF;
+  border-radius: 5px;
+  font-size: 25px;
+  color: black;
+  line-height: 0.6
+}
+
+input:checked ~ .radio_button {
+  color: #16B2FF;
+}
+
+.symbol {
+  font-family: "SWRPG Symbols";
+  //color: #16B2FF;
+}
+
+.tick {
+  width: 33px;
 }
 
 .highlight {
-  background-color: lightgreen;
+  background-color: #2a652a;
 }
 
 .hidden {
@@ -30,42 +92,34 @@ body {
 }
 
 .disabled {
-  background: lightpink;
+  background: #800807;
   text-decoration: line-through;
 }
 
 #main {
-  width: 500px;
-  border: 1px solid black;
+  width: 400px;
   margin: auto auto;
   padding: 10px 10px;
-  border-radius: 5px;
 }
 
 #new_slot {
-  border: 1px solid black;
   padding: 5px;
-  border-radius: 5px;
   margin-bottom: 20px;
 }
 
-
-#slots {
-  border: 1px solid black;
-  padding: 5px;
-  border-radius: 5px;
+#player_or_gm {
+  font-size: 20px;
 }
 
 #slots td, th {
-  width: 70px;
   padding: 5px 10px;
   text-align: center;
 }
 
 .results {
-  width: 20px;
   margin: 5px 20px;
   display: inline-block;
+  text-align: center;
 }
 
 .results div {
@@ -74,6 +128,20 @@ body {
   font-size: 25px;
 }
 
+#controls {
+  height: 40px;
+}
+
+#next_button {
+  margin-top: 10px;
+  float: right;
+}
+
+#round_counter {
+  float: left;
+  margin-top: 10px;
+  font-size: 30px;
+}
 
 h1 {
   text-align: center;

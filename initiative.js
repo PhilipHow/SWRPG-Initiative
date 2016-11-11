@@ -63,6 +63,9 @@ function addSlot() {
         if (newSlot.success > slots[i].success) {
           // higher successes
           slots.splice(i,0,newSlot);
+          if (i+1 <= current_slot) {
+            current_slot++;
+          }
           break;
 
         } else if (newSlot.success === slots[i].success) {
@@ -70,12 +73,18 @@ function addSlot() {
           if (newSlot.advantage > slots[i].advantage) {
             // higher advantages
             slots.splice(i,0,newSlot);
+            if (i+1 <= current_slot) {
+              current_slot++;
+            }
             break;
           } else if (newSlot.advantage === slots[i].advantage) {
             // equal advantages
             if (newSlot.triumph > slots[i].triumph) {
               // higher triumphs
               slots.splice(i,0,newSlot);
+              if (i+1 <= current_slot) {
+                current_slot++;
+              }
               break;
             } else if (newSlot.triumph === slots[i].triumph) {
               // equal triumphs
@@ -83,6 +92,9 @@ function addSlot() {
               // player breaks ties
               if (newSlot.player == "Player") {
                 slots.splice(i,0,newSlot);
+                if (i+1 <= current_slot) {
+                  current_slot++;
+                }
                 break;
               }
             }
@@ -145,12 +157,12 @@ function redrawTable() {
     new_row += "<td>" + slot_number + "</td><td>" + slot.player + "</td><td>" + slot.success +
     "</td><td>" + slot.advantage + "</td><td>" + slot.triumph + "</td>";
 
-    new_row += "<td><button id='slot_" + slot_number + "' onclick="
+    new_row += "<td><button class='tick' id='slot_" + slot_number + "' onclick="
 
     if (slot.status) {
-      new_row += "removeSlot(this)>x</button></td>";
+      new_row += "removeSlot(this)>×</button></td>";
     } else {
-      new_row +="restoreSlot(this)>y</button></td>";
+      new_row +="restoreSlot(this)>✓</button></td>";
     }
 
    

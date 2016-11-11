@@ -8,19 +8,22 @@
 </head>
 <body onload="reset()">
 
-<div id="main">
+<div id="main" class="ui">
 
 <h1> SWRPG: Initiative Tracker </h1>
 
-  <div id="new_slot">
+  <div id="new_slot" class="ui">
     <div id="player_or_gm">
+      New Slot: 
       <label>
         Player
         <input id="player_radio" type="radio" name="gm_player" checked/>
+        <div class="radio_button">■</div>
       </label>
       <label>
         GM
         <input id="gm_radio" type="radio" name="gm_player"/>
+        <div class="radio_button">■</div>
       </label>
     </div>
 
@@ -42,14 +45,12 @@
         <button id="triumph_button" onclick="addTriumph()">+</button>
       </div>
 
-      <span id="round_counter"></span>
-
       <button id="clear" onclick="reset()">Clear</button>
       <button id="add_slot" onclick="addSlot()">Add</button>
     </div>
   </div>
 
-  <div id="slots">
+  <div id="slots" class="ui">
     <table>
       <tr>
         <th>
@@ -80,6 +81,7 @@
   </div>
 
   <div id="controls">
+  <div id="round_counter"></div>
   <button id="next_button" class="hidden" onclick="next()">Start</button>
   </div>
 
