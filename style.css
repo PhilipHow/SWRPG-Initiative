@@ -1,6 +1,16 @@
 @font-face {
+  font-family:"STARWARS";
+  src: url("fonts/STARWARS.eot?") format("eot"),
+  url("fonts/STARWARS.woff") format("woff"),
+  url("fonts/STARWARS.ttf") format("truetype"),
+  url("fonts/STARWARS.svg#STARWARS") format("svg");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
   font-family: "SWRPG Symbols";
-  src: url("symbols.otf");
+  src: url("fonts/symbols.otf");
 }
 
 .symbol {
@@ -8,8 +18,63 @@
 }
 
 body {
+  font-family: "STARWARS";
 }
 
 .highlight {
   background-color: lightgreen;
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled {
+  background: lightpink;
+  text-decoration: line-through;
+}
+
+#main {
+  width: 500px;
+  border: 1px solid black;
+  margin: auto auto;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+
+#new_slot {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+#slots {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#slots td, th {
+  width: 70px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.results {
+  width: 20px;
+  margin: 5px 20px;
+  display: inline-block;
+}
+
+.results div {
+  text-align: center;
+  margin: 10px 5px;
+  font-size: 25px;
+}
+
+
+h1 {
+  text-align: center;
 }

@@ -3,77 +3,85 @@
 <head>
  <link href="style.css" rel="stylesheet">
  <script src="initiative.js"></script>
+ <title>SWRPG: Initiative Tracker</title>
 </head>
-<body onload="setup()">
+<body onload="reset()">
 
-<div id="new_slot">
-  <div id="player_or_gm">
-    <label>
-      Player
-      <input id="player_radio" type="radio" name="gm_player" checked/>
-    </label>
-    <label>
-      GM
-      <input id="gm_radio" type="radio" name="gm_player"/>
-    </label>
+<div id="main">
+
+<h1> SWRPG: Initiative Tracker </h1>
+
+  <div id="new_slot">
+    <div id="player_or_gm">
+      <label>
+        Player
+        <input id="player_radio" type="radio" name="gm_player" checked/>
+      </label>
+      <label>
+        GM
+        <input id="gm_radio" type="radio" name="gm_player"/>
+      </label>
+    </div>
+
+    <div id="results">
+
+      <div id="success" class="results">
+        <div class="symbol">s</div>
+        <div id="success_counter"></div>
+        <button id="success_button" onclick="addSuccess()">+</button>
+      </div>
+      <div id="advantage" class="results">
+        <div class="symbol">a</div>
+        <div id="advantage_counter"></div>
+        <button id="success_button" onclick="addAdvantage()">+</button>
+      </div>
+      <div id="triumph" class="results">
+        <div class="symbol">x</div>
+        <div id="triumph_counter"></div>
+        <button id="triumph_button" onclick="addTriumph()">+</button>
+      </div>
+
+      <span id="round_counter"></span>
+
+      <button id="clear" onclick="reset()">Clear</button>
+      <button id="add_slot" onclick="addSlot()">Add</button>
+    </div>
   </div>
 
-  <div id="results">
+  <div id="slots">
+    <table>
+      <tr>
+        <th>
+          Slot #
+        </th>
+        <th>
+          GM/Player
+        </th>
+        <th class="symbol">
+          s
+        </th>
+        <th class="symbol">
+          a
+        </th>
+        <th class="symbol">
+          x
+        </th>
+        <th>
 
-    <div id="success">
-      <span class="symbol">s</span>
-      <span id="success_counter"></span>
-      <button id="success_button" onclick="addSuccess()">+</button>
-    </div>
-    <div id="advantage">
-      <span class="symbol">a</span>
-      <span id="advantage_counter"></span>
-      <button id="success_button" onclick="addAdvantage()">+</button>
-    </div>
-    <div id="triumph">
-      <span class="symbol">x</span>
-      <span id="triumph_counter"></span>
-      <button id="triumph_button" onclick="addTriumph()">+</button>
-    </div>
+        </th>
+      </tr>
 
-    <button id="clear" onclick="reset()">Clear</button>
-    <button id="add_slot" onclick="addSlot()">Add</button>
+      <tbody id="table_rows">
+
+      </tbody>
+
+    </table>
   </div>
-</div>
 
-<div id="slots">
-  <table>
-    <tr>
-      <th>
-        Slot #
-      </th>
-      <th>
-        GM/Player
-      </th>
-      <th>
-        Successes
-      </th>
-      <th>
-        Advantages
-      </th>
-      <th>
-        Triumphs
-      </th>
-      <th>
+  <div id="controls">
+  <button id="next_button" class="hidden" onclick="next()">Start</button>
+  </div>
 
-      </th>
-    </tr>
-
-    <tbody id="table_rows">
-
-    </tbody>
-
-  </table>
-</div>
-
-<div id="controls">
-<button id="next_button" onclick="next()">Start</button>
-<span id="round_counter"></span>
 </div>
 
 </body>

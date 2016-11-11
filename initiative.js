@@ -6,11 +6,6 @@ var success;
 var advantage;
 var triumph;
 
-
-function setup() {
-  reset();
-}
-
 function reset() {
   success = 0;
   advantage = 0;
@@ -50,7 +45,8 @@ function addSlot() {
     player : player,
     success: success,
     advantage: advantage,
-    triumph: triumph
+    triumph: triumph,
+    status: true
   }
 
   if (slots.length === 0) {
@@ -98,22 +94,40 @@ function addSlot() {
     }
   }
 
+  // unhide next button
+  document.getElementById('next_button').className = "";
+
   reset();
   redrawTable();
 }
 
 function removeSlot(row) {
-  var slot_remove = row.id.substr(5);
-  slots.splice(slot_remove-1,1);
 
-  if (current_slot > slot_remove) {
-    current_slot--;
+  var slot_remove = row.id.substr(5);
+
+  if (round === 0) {
+    
+    slots.splice(slot_remove-1,1);
+
+    if (current_slot > slot_remove) {
+      current_slot--;
+    }
+    
+  } else {
+    slots[slot_remove-1].status = false;
   }
   redrawTable();
 }
 
+function restoreSlot(row) {
+  var slot_restore = row.id.substr(5);
+  console.log("restore " + slot_restore);
+
+  slots[slot_restore-1].status = true;
+  redrawTable();
+}
+
 function redrawTable() {
-  console.log(current_slot);
   
   var new_table = "";
   var slot_number = 1;
@@ -122,6 +136,8 @@ function redrawTable() {
 
     if (current_slot === slot_number) {
       var new_row = "<tr class='highlight'>";
+    } else if (!slot.status) {
+      var new_row = "<tr class='disabled'>";
     } else {
       var new_row = "<tr>";
     }
@@ -129,7 +145,15 @@ function redrawTable() {
     new_row += "<td>" + slot_number + "</td><td>" + slot.player + "</td><td>" + slot.success +
     "</td><td>" + slot.advantage + "</td><td>" + slot.triumph + "</td>";
 
-    new_row += "<td><button id='slot_" + slot_number + "' onclick=removeSlot(this)>x</button></td>";
+    new_row += "<td><button id='slot_" + slot_number + "' onclick="
+
+    if (slot.status) {
+      new_row += "removeSlot(this)>x</button></td>";
+    } else {
+      new_row +="restoreSlot(this)>y</button></td>";
+    }
+
+   
     new_row += "</tr>";
 
     slot_number++;
@@ -185,6 +209,10 @@ function next() {
       round++;
       current_slot = 1;
     }
+  }
+
+  while (!slots[current_slot-1].status) {
+    next();
   }
 
   document.getElementById('round_counter').innerHTML = "Round: " + round;
