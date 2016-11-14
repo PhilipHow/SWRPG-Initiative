@@ -1,12 +1,12 @@
-var slots = [];
-var round = 0;
-var current_slot = 0;
+var slots;
+var round;
+var current_slot;
 
 var success;
 var advantage;
 var triumph;
 
-function reset() {
+function clear() {
   success = 0;
   advantage = 0;
   triumph = 0;
@@ -14,7 +14,17 @@ function reset() {
   document.getElementById('success_counter').innerHTML = success;
   document.getElementById('advantage_counter').innerHTML = advantage;
   document.getElementById('triumph_counter').innerHTML = triumph;
+}
 
+function reset() {
+  slots = [];
+  round = 0;
+  current_slot = 0;
+  clear();
+  redrawTable();
+  document.getElementById('round_counter').innerHTML = "";
+  document.getElementById('next_button').className = "hidden";
+  document.getElementById('reset_button').className = "hidden";
 }
 
 function addSuccess() {
@@ -51,6 +61,9 @@ function addSlot() {
 
   if (slots.length === 0) {
     slots.push(newSlot);
+    // unhide next button
+    document.getElementById('next_button').className = "";
+    document.getElementById('reset_button').className = "";
   } else {
     var length = slots.length;
 
@@ -106,10 +119,7 @@ function addSlot() {
     }
   }
 
-  // unhide next button
-  document.getElementById('next_button').className = "";
-
-  reset();
+  clear();
   redrawTable();
 }
 

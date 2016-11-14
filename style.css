@@ -130,6 +130,7 @@ input:checked ~ .radio_button {
 
 #controls {
   height: 40px;
+  text-align: center;
 }
 
 #next_button {
@@ -137,8 +138,13 @@ input:checked ~ .radio_button {
   float: right;
 }
 
-#round_counter {
+#reset_button {
+  margin-top: 10px;
   float: left;
+}
+
+#round_counter {
+  display: inline-block;
   margin-top: 10px;
   font-size: 30px;
 }
