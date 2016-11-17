@@ -6,22 +6,27 @@ var success;
 var advantage;
 var triumph;
 
-function clear() {
+// reset dice results
+function clear_slot() {
   success = 0;
   advantage = 0;
   triumph = 0;
 
+  // update displayed dice results
   document.getElementById('success_counter').innerHTML = success;
   document.getElementById('advantage_counter').innerHTML = advantage;
   document.getElementById('triumph_counter').innerHTML = triumph;
 }
 
+// reset the entire app
 function reset() {
   slots = [];
   round = 0;
   current_slot = 0;
-  clear();
+  clear_slot();
   redrawTable();
+
+  // update round countets, and hide buttons
   document.getElementById('round_counter').innerHTML = "";
   document.getElementById('next_button').className = "hidden";
   document.getElementById('reset_button').className = "hidden";
@@ -65,11 +70,12 @@ function addSlot() {
     document.getElementById('next_button').className = "";
     document.getElementById('reset_button').className = "";
   } else {
+    // traverse existing slots (already ordered) to determine slot
     var length = slots.length;
 
       for (var i = 0; i <= length; i++) {
         if (i == length) {
-          // reached the end - append to the end
+          // reached the end of the list- append to the end
           slots.push(newSlot);
         } else {
 
@@ -119,10 +125,11 @@ function addSlot() {
     }
   }
 
-  clear();
+  clear_slot();
   redrawTable();
 }
 
+// if not started, delete the slot, if started toggle the slot
 function removeSlot(row) {
 
   var slot_remove = row.id.substr(5);
@@ -134,6 +141,13 @@ function removeSlot(row) {
     if (current_slot > slot_remove) {
       current_slot--;
     }
+
+    // hide buttons if no more slots
+    if (slots.length === 0) {
+      document.getElementById('next_button').className = "hidden";
+      document.getElementById('reset_button').className = "hidden";
+
+    }
     
   } else {
     slots[slot_remove-1].status = false;
@@ -141,9 +155,9 @@ function removeSlot(row) {
   redrawTable();
 }
 
+// untoggle a slot
 function restoreSlot(row) {
   var slot_restore = row.id.substr(5);
-  console.log("restore " + slot_restore);
 
   slots[slot_restore-1].status = true;
   redrawTable();
@@ -187,6 +201,10 @@ function redrawTable() {
 
 function next() {
 
+  if (slots.length === 0) {
+    return false;
+  }
+
   var set = false;
 
   if (round === 0) {
@@ -225,7 +243,6 @@ function next() {
 
   if (!set) {
     current_slot++;
-    console.log("Current slot ++ " + current_slot);
 
     if (current_slot > slots.length) {
       round++;
