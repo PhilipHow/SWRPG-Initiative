@@ -1,6 +1,7 @@
 var slots;
 var round;
 var current_slot;
+var disabled;
 
 var success;
 var advantage;
@@ -23,6 +24,7 @@ function reset() {
   slots = [];
   round = 0;
   current_slot = 0;
+  disabled = 0;
   clear_slot();
   redrawTable();
 
@@ -146,11 +148,15 @@ function removeSlot(row) {
     if (slots.length === 0) {
       document.getElementById('next_button').className = "hidden";
       document.getElementById('reset_button').className = "hidden";
-
     }
     
   } else {
     slots[slot_remove-1].status = false;
+    disabled++;
+
+    if (disabled === slots.length) {
+      document.getElementById('next_button').disabled = true;
+    }
   }
   redrawTable();
 }
@@ -160,6 +166,11 @@ function restoreSlot(row) {
   var slot_restore = row.id.substr(5);
 
   slots[slot_restore-1].status = true;
+  disabled--;
+
+  if (disabled < slots.length) {
+    document.getElementById('next_button').disabled = false;
+  }
   redrawTable();
 }
 
@@ -250,6 +261,7 @@ function next() {
     }
   }
 
+  // not a great way of doing this..
   while (!slots[current_slot-1].status) {
     next();
   }
