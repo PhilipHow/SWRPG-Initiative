@@ -83,7 +83,7 @@ input:checked ~ .radio_button {
 
 .symbol {
   font-family: "SWRPG Symbols";
-  //color: #16B2FF;
+  color: #16B2FF;
 }
 
 .tick {
@@ -194,4 +194,32 @@ input:checked ~ .radio_button {
 
 h1 {
   text-align: center;
+}
+
+@media (max-width: 400px) {
+  #main {
+    width: 100%;
+    border: 0px;
+    padding: 0px 0px;
+  }
+
+  #results {
+    float: none;
+    margin: 0px auto;
+    display: block;
+  }
+
+  #player_or_gm {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 200px;
+    height: 75px;
+  }
+
+  #slots td, th {
+  padding: 5px 5px;
+  text-align: center;
+  }
 }
