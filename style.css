@@ -196,7 +196,7 @@ h1 {
   text-align: center;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   #main {
     width: 100%;
     border: 0px;
@@ -207,6 +207,11 @@ h1 {
     float: none;
     margin: 0px auto;
     display: block;
+    width: 180px;
+  }
+
+  .results {
+    margin: 5px 10px;
   }
 
   #player_or_gm {
