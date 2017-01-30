@@ -32,9 +32,11 @@ button {
   outline:none;
 }
 
-button:hover {
-  background-color: #16B2FF;
-  color: black;
+@media (hover:hover) {
+    button:hover {
+    background-color: #16B2FF;
+    color: black;
+  }
 }
 
 button:active {
